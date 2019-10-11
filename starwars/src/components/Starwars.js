@@ -4,6 +4,7 @@ import {CardHolder} from "../components/Styled";
 import {StarCard} from "../components/StarCard";
 import { Spinner } from 'reactstrap';
 
+
 export default function MakeCharacter(){
 
  const [dude, setDude] = useState([]);
@@ -19,18 +20,21 @@ export default function MakeCharacter(){
 
  if(!dude){
      return(
-         <div>
-             <Spinner color = "info"/>
-         </div>
+         <CardHolder>
+             <Spinner color = "primary"/>
+         </CardHolder>
      )
  }
 
  return(
-     <CardHolder>
-         {dude.map((d,index)=>(
+     
+         <CardHolder>
+             {dude.map((d,index)=>(
              <StarCard key = {index} name = {d.name} birth = {d.birth_year} height = {d.height} mass = {d.mass}/>
-         ))}
-     </CardHolder>
+                ))}
+         </CardHolder>
+         
+     
  )
 
 }

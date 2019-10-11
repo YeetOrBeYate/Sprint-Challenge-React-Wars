@@ -1,21 +1,25 @@
 import React,{useState} from 'react';
-import {Card} from "../components/Styled";
-
+import {Cardy} from "../components/Styled";
+import { Collapse, Button, CardBody, Card,CardTitle,CardSubtitle } from 'reactstrap';
 export const StarCard = (props)=> {
      
+   const [collapse, setCollapse] = useState(false);
+
+  const toggle = () => setCollapse(!collapse);
       return (
-        <Card key = {props.key}>
-            <h1>{props.name}</h1>
-                <p>
-                   Birth Year: {props.birth} 
-                </p>
-                <p>
-                   Height: {props.height} 
-                </p>
-                <p>
-                   Mass: {props.mass} 
-                </p>
-        </Card>
+        <Cardy key = {props.key}>
+         <Card>
+            <CardTitle>{props.name}</CardTitle>
+            <Button color="primary" onClick={()=>toggle()} style={{ marginBottom: '1rem' }}>Chractristics</Button>
+            <Collapse isOpen={collapse}>
+               <CardBody>
+                  <CardSubtitle>Birth Year: {props.birth} </CardSubtitle>
+                  <CardSubtitle>Height: {props.height} </CardSubtitle>
+                  <CardSubtitle>Mass: {props.mass} </CardSubtitle>
+               </CardBody>
+            </Collapse>
+         </Card>
+        </Cardy>
       );
     
   }
