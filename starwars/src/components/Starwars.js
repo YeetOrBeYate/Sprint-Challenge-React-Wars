@@ -18,7 +18,7 @@ export default function MakeCharacter(){
      })
  },[])
 
- if(!dude){
+ if(dude.length == 0){
      return(
          <CardHolder>
              <Spinner color = "primary"/>

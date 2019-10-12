@@ -7,14 +7,17 @@ export const StarWorld = (props)=>{
     const world = props.world;
     const [collapse,setCollapes] = useState(false);
     const [planet, setPlanet] = useState({})
+    const [called,setCalled] = useState(false);
 
-    // function stopCalls(){
-    //     if(planet === {dummy:"variable"}){
-    //         getWorld();
-    //     }else{
-    //         console.log("Han shot first")
-    //     }
-    // }
+    function stopCalls(){
+        if(called===false){
+            getWorld();
+            setCalled(true);
+        }else{
+            console.log("Han shot first")
+        }
+        
+    }
 
     function toggle(){
         setCollapes(!collapse);
@@ -37,7 +40,7 @@ export const StarWorld = (props)=>{
     
     return(
         <Card>
-            <Button color = "primary" onClick={()=>{toggle(); getWorld();}}>Show World</Button>
+            <Button color = "primary" onClick={()=>{toggle(); stopCalls();}}>Show World</Button>
             <Collapse isOpen={collapse}>
                 <CardBody>
                     <CardTitle className = "text-primary"><big>Name:{planet.name}</big></CardTitle>
