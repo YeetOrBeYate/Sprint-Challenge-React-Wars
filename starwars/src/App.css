@@ -11,6 +11,7 @@
 /* write your parent styles in here for your App.js */
 
 
-.card{
+
+.shadowClass{
   box-shadow: 1px 2px 10px 1px black;
 }

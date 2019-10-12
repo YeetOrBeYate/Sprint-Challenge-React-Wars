@@ -9,9 +9,9 @@ export const StarCard = (props)=> {
   const toggle = () => setCollapse(!collapse);
       return (
         <Cardy>
-         <Card>
+         <Card className = 'shadowClass'>
             <CardTitle className = "text-primary"><big>{props.name}</big></CardTitle>
-            <Button color="primary" onClick={()=>{toggle(); console.log("yeeet")}}  style={{ marginBottom: '1rem' }}>Characteristics</Button>
+            <Button color="primary" onClick={()=>{toggle();}}  style={{ marginBottom: '1rem' }}>Characteristics</Button>
             <Collapse isOpen={collapse}>
                <CardBody>
                   <CardSubtitle>Birth Year: {props.birth} </CardSubtitle>

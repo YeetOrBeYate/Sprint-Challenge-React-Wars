@@ -29,7 +29,6 @@ export const StarWorld = (props)=>{
             setPlanet(res.data);
         })
     }
-
     if(!planet){
         return(
             <div>
@@ -37,7 +36,6 @@ export const StarWorld = (props)=>{
             </div>
         );
     }
-    
     return(
         <Card>
             <Button color = "primary" onClick={()=>{toggle(); stopCalls();}}>Show World</Button>
