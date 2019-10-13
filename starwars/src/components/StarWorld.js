@@ -6,22 +6,54 @@ export const StarWorld = (props)=>{
 
     const world = props.world;
     const [collapse,setCollapes] = useState(false);
-    const [planet, setPlanet] = useState({})
+    const [planet, setPlanet] = useState('')
     const [called,setCalled] = useState(false);
+
+    const display = props.display;
+    const setDisplay = props.function; 
+    // display starts at false
+
+    if(!display){
+    
+    }else{
+        
+        NavButtonClose();
+    }
+
+    function NavButtonClose(){
+        
+
+        if(display && collapse){
+            
+            setCollapes(false);
+            setDisplay(false);
+            setCalled(false);
+            console.log('page reset')
+        }  
+    }
 
     function stopCalls(){
         if(called===false){
             getWorld();
             setCalled(true);
+            console.log("false CALLED");
         }else{
-            console.log("Han shot first")
+            console.log("true CALLED");
+            
         }
-        
-    }
 
-    function toggle(){
-        setCollapes(!collapse);
     }
+    const toggle = () => {   
+        if(!collapse){
+            
+            setCollapes(true);
+            setDisplay(false);
+        }else{
+            setCollapes(false);
+            setDisplay(false);
+            setCalled(false);
+        }
+    };
     function getWorld(){
         axios.get(`${world}`)
         .then((res)=>{
@@ -29,13 +61,7 @@ export const StarWorld = (props)=>{
             setPlanet(res.data);
         })
     }
-    if(!planet){
-        return(
-            <div>
-                <Spinner color = "primary"/>
-            </div>
-        );
-    }
+  
     return(
         <Card>
             <Button color = "primary" onClick={()=>{toggle(); stopCalls();}}>Show World</Button>

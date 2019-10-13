@@ -12,6 +12,14 @@ export default function MakeCharacter(){
  const [previous,setPrevious] = useState('https://swapi.co/api/people/')
  const [data,setData] = useState('https://swapi.co/api/people/')
 
+ //big brain useStates
+ const [display, setDisplay] = useState(false)
+
+ function changeDisplay(value){
+     setDisplay(value);
+ }
+ //passing this function down to the StarWorld comp
+
  useEffect(()=>{
      axios.get(`${data}`)
      .then((response)=>{
@@ -34,15 +42,20 @@ export default function MakeCharacter(){
      )
  }
 
+ function CloseCards(){
+     setDisplay(true);
+ }
+//only for the Next and last button
+
  return(
         <div>
          <CardHolder>
-            <Button color = "primary" onClick = {()=>setData(previous)}>Last</Button>
-            <Button color = "primary" onClick = {()=>setData(next)}>Next</Button>
+            <Button className = 'shadowClass' color = "primary" onClick = {()=>{setData(previous);CloseCards()}}>Last</Button>
+            <Button className = 'shadowClass' color = "primary" onClick = {()=>{setData(next);CloseCards()}}>Next</Button>
          </CardHolder>
          <CardHolder>
              {dude.map((d,index)=>(
-             <StarCard key = {index}  name = {d.name} birth = {d.birth_year} height = {d.height} mass = {d.mass} world = {d.homeworld}/>
+             <StarCard key = {index}  name = {d.name} birth = {d.birth_year} height = {d.height} mass = {d.mass} world = {d.homeworld} display = {display} function = {changeDisplay}/>
                 ))}
          </CardHolder>
         </div>

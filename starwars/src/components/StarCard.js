@@ -4,9 +4,42 @@ import { Collapse, Button, CardBody, Card,CardTitle,CardSubtitle } from 'reactst
 import {StarWorld} from '../components/StarWorld';
 export const StarCard = (props)=> {
      
-   const [collapse, setCollapse] = useState(false);
+const [collapse, setCollapse] = useState(false);
 
-  const toggle = () => setCollapse(!collapse);
+
+const display = props.display;
+const setDisplay = props.function; 
+// display starts at false
+
+    if(!display){
+    
+    }else{
+        
+        NavButtonClose();
+    }
+
+    function NavButtonClose(){
+        
+
+        if(display && collapse){
+            
+            setCollapse(false);
+            setDisplay(false);
+             
+        }  
+    }
+
+  const toggle = () => {   
+      if(!collapse){
+         
+         setCollapse(true);
+         setDisplay(false);
+      }else{
+         setCollapse(false);
+         setDisplay(false);
+      }
+   };
+
       return (
         <Cardy>
          <Card className = 'shadowClass'>
@@ -17,7 +50,7 @@ export const StarCard = (props)=> {
                   <CardSubtitle>Birth Year: {props.birth} </CardSubtitle>
                   <CardSubtitle>Height: {props.height} </CardSubtitle>
                   <CardSubtitle>Mass: {props.mass} </CardSubtitle>
-                  <StarWorld world = {props.world}/>
+                  <StarWorld display = {props.display} world = {props.world} function = {props.function}/>
                </CardBody>
             </Collapse>
          </Card>
