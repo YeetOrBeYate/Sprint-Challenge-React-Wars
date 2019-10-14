@@ -29,16 +29,10 @@ const setDisplay = props.function;
         }  
     }
 
-  const toggle = () => {   
-      if(!collapse){
-         
-         setCollapse(true);
-         setDisplay(false);
-      }else{
-         setCollapse(false);
-         setDisplay(false);
-      }
-   };
+   const toggle = () =>{
+      setCollapse(!collapse);
+      setDisplay(false);
+   }
 
       return (
         <Cardy>

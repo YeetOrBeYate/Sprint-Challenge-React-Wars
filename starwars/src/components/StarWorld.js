@@ -22,7 +22,6 @@ export const StarWorld = (props)=>{
 
     function NavButtonClose(){
         
-
         if(display && collapse){
             
             setCollapes(false);
@@ -54,6 +53,7 @@ export const StarWorld = (props)=>{
             setCalled(false);
         }
     };
+
     function getWorld(){
         axios.get(`${world}`)
         .then((res)=>{
